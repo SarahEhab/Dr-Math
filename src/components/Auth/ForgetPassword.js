@@ -21,7 +21,7 @@ const ForgetPassword = () => {
                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                    <Form.Label style={{display:'flex'}} >بريدك الإلكتروني</Form.Label>
                    <Form.Control type="email" placeholder="أدخل بريدك الالكتروني الخاص بك" className='custom-input'
-                       style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px', width:'507px', marginBottom:'30px'}}
+                       style={{borderRadius:'8px', background:'rgba(245, 245, 245, 0.25)', border:'none', padding:'18px', width:'507px', marginBottom:'30px'}}
            />
                </Form.Group>
              

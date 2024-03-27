@@ -23,13 +23,13 @@ const NewPassword = () => {
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label style={{display:'flex'}}>كلمه المرور </Form.Label>
                     <Form.Control type="password" placeholder="أدخل كلمة المرور" className='custom-input'
-                    style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px', width:'507px'  }}/>
+                    style={{borderRadius:'8px', background:'rgba(245, 245, 245, 0.25)', border:'none', padding:'18px', width:'507px'  }}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label style={{display:'flex'}}>تاكيد كلمه المرور   </Form.Label>
                     <Form.Control type="password" placeholder="تاكيد كلمة المرور" className='custom-input'
-                    style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px', width:'507px'  }}/>
+                    style={{borderRadius:'8px', background:'rgba(245, 245, 245, 0.25)', border:'none', padding:'18px', width:'507px'  }}/>
                 </Form.Group>
 
                

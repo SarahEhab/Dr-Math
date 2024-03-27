@@ -22,7 +22,7 @@ const ConfirmEmail = () => {
                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   
                    <Form.Control type="text" placeholder="    " className='custom-input'
-                       style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px', width:'507px', marginBottom:'30px'}}
+                       style={{borderRadius:'8px', background:'rgba(245, 245, 245, 0.25)', border:'none', padding:'18px', width:'507px', marginBottom:'30px'}}
            />
                </Form.Group>
              
