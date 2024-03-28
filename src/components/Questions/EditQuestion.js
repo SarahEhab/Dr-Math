@@ -34,7 +34,7 @@ const EditQuestion = () => {
 <div style={{paddingRight:'30px', paddingLeft:'30px' , height:'100%'}}>
 
 
-        <div style={{background:'#FFFFFF', width:'100%', height:'100%' , borderRadius:'10px' , padding:'20px', margin:'20px 15px 20px 15px'}}>      
+        <div className='box' style={{background:'#FFFFFF', width:'100%', height:'100%' , borderRadius:'10px' , padding:'20px', margin:'20px 15px 20px 15px'}}>      
              <p style={{ display:'flex', fontSize:'18px', marginBottom:'20px'}}>تعديل الاسئلة   </p>
 
             <Row>

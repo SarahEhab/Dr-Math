@@ -24,9 +24,21 @@ const QuestionsPage = () => {
       
       
 
-        <Col sm={10} xs={10} md={9} xl={10} style={{padding:'90px 35px 35px 35px'}}>       
-        
-        <div style={{background:'#FFFFFF', width:'100%', height:'100%' , borderRadius:'10px'}}>  
+        <Col sm={10} xs={10} md={9} xl={10} >       
+        <div className='nav-bar' style={{background:'#FFFFFF' }}>
+                <div style={{display:'flex', justifyContent:'space-between', padding:'12px'}}>
+                    <p> الاشئله</p>
+
+                    <div style={{display:'flex'}}>
+                        <p> admin</p>
+                        <p> admin</p>
+                        <p> admin</p>
+                    </div>
+                </div>
+        </div>
+
+   <div style={{paddingRight:'30px', paddingLeft:'30px' , height:'100%'}}>     
+        <div className='box' style={{background:'#FFFFFF', width:'100%', height:'100%' , borderRadius:'10px', padding:'20px', margin:'20px 15px 20px 15px'}}>  
 
 
             <div style={{ display:'flex', justifyContent:'space-around', paddingTop:'30px'}}>
@@ -398,7 +410,7 @@ const QuestionsPage = () => {
 
 
         </div>
-
+  </div>
        
         </Col>
      

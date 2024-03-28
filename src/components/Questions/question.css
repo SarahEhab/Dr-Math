@@ -157,3 +157,22 @@ input[type='file']{
     /* margin-right: -11px !important; */
     width: 940px !important;
     } }
+
+
+
+
+    @media (min-width: 769px) and (max-width: 900px) {      
+        .box{
+          
+      
+        margin-right: 35px !important;
+        /* width: 940px !important; */
+        } }
+    @media (min-width: 1200px) and (max-width: 1400px) {      
+        .box{
+          
+     
+        margin-right: 40px !important;
+        /* width: 940px !important; */
+        } }
+    

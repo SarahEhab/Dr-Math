@@ -13,6 +13,13 @@
   /* background-color: red; */
   }
 }
+@media (min-width: 769px) and (max-width: 843px) {      
+  .sidebar{
+    
+  background-color: rgb(255, 203, 105) !important;
+ 
+  width: 210px !important;
+  } }
 
   .sidebar-header {
     padding: 10px;
