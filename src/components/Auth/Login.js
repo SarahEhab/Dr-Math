@@ -1,12 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row,Col , Container, Form} from 'react-bootstrap'
 import imgForm from "../../images/imgform.png";
 import './Auth.css'
 import { Link } from "react-router-dom";
-
+import { createLoginUser } from '../../features/auth/authSlice';
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
+    const dispatch = useDispatch();
+    //const navigate = useNavigate();
+    const [state, setState] = useState({
+      email: "",
+      password: "",
+    });
   
+    // Destructure state object for easier access
+    const { email, password } = state;
+  
+    // Function to handle input changes
+    const handleInputChange = (fieldName) => (e) => {
+      setState((prevState) => ({ ...prevState, [fieldName]: e.target.value }));
+    };
+    const res = useSelector((state) => state.auth.userLogin);
+  
+    const isLoading = useSelector((state) => state.auth.isLoading);
+    const error = useSelector((state) => state.auth.error);
+  
+    // console.log(res);
+    //  console.log(res.data.token)
+    // if (res && res.data) {
+    //   console.log(res.data.token);
+    // }
+    // console.log(res.message);
+    // console.log(res.success);
+  
+    //save data
+    const OnSubmit = async (e) => {
+      e.preventDefault();
+      await dispatch(
+        createLoginUser({
+          email,
+          password,
+        })
+      );
+    };
     return <>
 
     <div>
@@ -26,22 +63,27 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label style={{display:'flex'}} >بريدك الإلكتروني</Form.Label>
                     <Form.Control type="email" placeholder="أدخل بريدك الالكتروني الخاص بك" className='custom-input'
-                        style={{borderRadius:'8px', background:'rgba(245, 245, 245, 0.25)', border:'none', padding:'18px', width:'507px', placeholder:{color:'red'}}}
+                        style={{borderRadius:'8px', background:'rgba(245, 245, 245, 0.25)', border:'none', padding:'18px', width:'507px'}}
+                        onChange={handleInputChange("email")}
+                    value={email}
             />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label style={{display:'flex'}}>كلمه المرور </Form.Label>
                     <Form.Control type="password" placeholder="أدخل كلمة المرور" className='custom-input'
-                    style={{borderRadius:'8px', background:'rgba(245, 245, 245, 0.25)', border:'none', padding:'18px', width:'507px'  }}/>
+                    style={{borderRadius:'8px', background:'rgba(245, 245, 245, 0.25)', border:'none', padding:'18px', width:'507px'  }}
+                    onChange={handleInputChange("password")}
+                    value={password}
+                    />
                 </Form.Group>
 
                 <Form.Group className=" d-flex" >
-                <input type="radio" id="html2" name="fav_language" value="HTML" className="custom-radio"/>
+                <input type="radio" id="contactChoice1" name="contact"   value="admin" className="custom-radio"/>
                
                     <p style={{color:'linear-gradient(91deg, #FF7300 0.18%, #FFCD4D 99.68%)' , marginRight:'10px'}}> أدمن</p>
                 </Form.Group>
                 <Form.Group className="mb-3 d-flex" >
-                <input type="radio" id="html" name="fav_language" value="HTML" className="custom-radio"/>
+                <input type="radio" id="contactChoice2" name="contact"   value="user" className="custom-radio"/>
              
                     <p style={{color:'#BFBFBF', marginRight:'10px'}}> مسؤال فرعي</p>
                 </Form.Group>
@@ -58,7 +100,7 @@ const Login = () => {
             </Form>
           
        </Col>
-        
+       {/* onClick={(e) => OnSubmit(e)} */}
      </Row>
      </div>
     </>;
