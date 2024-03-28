@@ -4,8 +4,11 @@ import imgForm from "../../images/imgform.png";
 import './Auth.css'
 import { Link } from "react-router-dom";
 
+
 const Login = () => {
+  
     return <>
+
     <div>
 
      <Row style={{maxWidth:'100%'}}>
@@ -33,11 +36,13 @@ const Login = () => {
                 </Form.Group>
 
                 <Form.Group className=" d-flex" >
-                    <Form.Check type="radio"  />
+                <input type="radio" id="html2" name="fav_language" value="HTML" className="custom-radio"/>
+               
                     <p style={{color:'linear-gradient(91deg, #FF7300 0.18%, #FFCD4D 99.68%)' , marginRight:'10px'}}> أدمن</p>
                 </Form.Group>
                 <Form.Group className="mb-3 d-flex" >
-                    <Form.Check type="radio"  />
+                <input type="radio" id="html" name="fav_language" value="HTML" className="custom-radio"/>
+             
                     <p style={{color:'#BFBFBF', marginRight:'10px'}}> مسؤال فرعي</p>
                 </Form.Group>
 
@@ -51,11 +56,10 @@ const Login = () => {
             </Link>
                
             </Form>
-
+          
        </Col>
         
      </Row>
-
      </div>
     </>;
 }

@@ -36,16 +36,15 @@ const Sidebar = () => {
           </li>
 
 
-          {/* <li>
-          <Link to='/setting'  onClick={() => handleClick('settings')} style={{ backgroundColor: clickedItem === 'settings' ? '#FF7300' : '' , color: clickedItem === 'settings' ? '#FFFFFF' : '#CACACA'}}  >
-          الإعدادات
+          <li>
+          
          
             <a href="/setting" onClick={() => handleClick('settings')} style={{ backgroundColor: clickedItem === 'settings' ? '#FF7300' : '' , color: clickedItem === 'settings' ? '#FFFFFF' : '#CACACA'}}>الإعدادات</a>
-            </Link>
-          </li> */}
+          
+          </li>
 
 
-          <Accordion>
+          {/* <Accordion>
       <Accordion.Item eventKey="0">
         <Accordion.Header><a href="#" onClick={() => handleClick('settings')} style={{ backgroundColor: clickedItem === 'settings' ? '#FF7300' : '' , color: clickedItem === 'settings' ? '#FFFFFF' : '#CACACA'}}>الإعدادات</a></Accordion.Header>
 
@@ -62,7 +61,7 @@ const Sidebar = () => {
         </Link>
        
       </Accordion.Item>
-    </Accordion>
+    </Accordion> */}
 
 
 
@@ -90,7 +89,7 @@ const Sidebar = () => {
           الاقسام الرئسية
           </Accordion.Body>
         </Link>
-        <Link to='/sub-section' style={{textDecoration:'none'}}>
+        <Link to='/sub-section' style={{textDecoration:'none', marginTop:'-30px'}}>
           <Accordion.Body style={{color:'#FF8410'}}>
           الاقسام الفرعية
           </Accordion.Body>

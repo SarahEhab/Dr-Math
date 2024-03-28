@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import { Accordion, Col, Form, Row } from 'react-bootstrap';
+import './section.css'
+import Select from 'react-select';
+
+const options = [
+    { value: 'قسم رئيسي', label: 'قسم رئيسي' },
+    { value: 'مستوي', label: 'مستوي' },
+    
+  ];
 
 const AddMainSection = () => {
+    const [selectedOption, setSelectedOption] = useState(null);
+    //console.log(selectedOption)
+
     return    <div>
 
     <Row style={{maxWidth:'100%'}}>
@@ -31,7 +42,7 @@ const AddMainSection = () => {
 
 <div style={{paddingRight:'30px', paddingLeft:'30px' , height:'100%'}}>
  
-
+ 
         <div style={{background:'#FFFFFF', width:'100%', height:'100%' , borderRadius:'10px' , padding:'20px', margin:'20px 15px 20px 15px'}}>      
              <p style={{ display:'flex', fontSize:'18px', marginBottom:'25px'}}> اضافة قسم رئيسي / مستوي   </p>
 
@@ -55,7 +66,7 @@ const AddMainSection = () => {
                     {/* <Form.Control type="email" placeholder="حدد نوع القسم" className='custom-input' 
                         style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px'}}
             /> */}
-            <Accordion>
+            {/* <Accordion>
       <Accordion.Item eventKey="0">
         <Accordion.Header style={{color:'rgba(245, 245, 245, 0.25)'}}  >  تحديد نوع القسم</Accordion.Header>
         <Accordion.Body>
@@ -64,7 +75,14 @@ const AddMainSection = () => {
         </Accordion.Body>
       </Accordion.Item>
       
-    </Accordion>
+    </Accordion> */}
+
+    <Select
+        defaultValue={selectedOption} 
+        onChange={setSelectedOption}
+        options={options}
+        placeholder="حدد نوع القسم" 
+      />
                 </Form.Group>
               
                

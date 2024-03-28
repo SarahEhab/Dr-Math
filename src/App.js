@@ -41,6 +41,7 @@ function App() {
           <Route path="/confirm-email" element={<ConfirmEmail /> } />
           <Route path="/new-password" element={<NewPassword /> } />
           <Route path="/sidebar" element={<Sidebar /> } />
+
           <Route path="/Questions" element={<Questions /> } />
           <Route path="/add-excel-sheet" element={<AddExcelSheet /> } />
           <Route path="/edit-question" element={<EditQuestion/> } />
@@ -54,18 +55,18 @@ function App() {
           <Route path="/edit-sub-section" element={ <EditSubSection /> } />
           <Route path="/add-sub-section" element={ <AddSubSection/> } />
 
-          <Route path="/Sub-official" element={ <SubOfficials/> } />
+          {/* <Route path="/Sub-official" element={ <SubOfficials/> } />
           <Route path="/add-sub-official" element={ <AddSubOfficials/> } />
-          <Route path="/edit-sub-official-details" element={ <EditSubOfficialDetails/> } />
+          <Route path="/edit-sub-official-details" element={ <EditSubOfficialDetails/> } /> */}
 
           <Route path="/personal-page" element={ <PersonalPage/> } />
-
+{/* 
           <Route path="/introduction-pages" element={ <IntroductionPages/> } />
           <Route path="/slider-picture" element={ <SliderPictures/> } />
 
           <Route path="/slider-pictures-student" element={ <SliderPicturesStudent/> } />
           <Route path="/edit-slider-pictures-student" element={ <EditSliderPicturesStudent/> } />
-          <Route path="/add-slider-pictures-student" element={ <AddSliderPictureStudent/> } />
+          <Route path="/add-slider-pictures-student" element={ <AddSliderPictureStudent/> } /> */}
         
 
           </Routes>

@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import { Accordion, Col, Form, Row } from 'react-bootstrap';
+import Select from 'react-select';
+
+const options = [
+    { value: 'قسم رئيسي', label: 'قسم رئيسي' },
+    { value: 'مستوي', label: 'مستوي' },
+    
+  ];
+const mainOptions = [
+    { value:" قسم رئيسي واحد", label: 'قسم رئيسي واحد '},
+    { value:" قسم رئيسي اتنين", label: 'قسم رئيسي اتنين '},
+    { value:" قسم رئيسي تلاته", label: 'قسم رئيسي تلاته '},
+    
+    
+  ];
 
 const AddSubSection = () => {
+    const [selectedOption, setSelectedOption] = useState(null);
     return    <div>
 
     <Row style={{maxWidth:'100%'}}>
@@ -48,9 +63,16 @@ const AddSubSection = () => {
 
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label style={{display:'flex', marginBottom:'15px'}} > تحديد القسم الرئسية / المستوي الضاف الية* </Form.Label>
-                    <Form.Control type="text" placeholder="  تحديد القسم الرئيسي /  المستوي المضاف الية " className='custom-input' 
+                    {/* <Form.Control type="text" placeholder="  تحديد القسم الرئيسي /  المستوي المضاف الية " className='custom-input' 
                         style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px'}}
-            />
+            /> */}
+
+            <Select
+        defaultValue={selectedOption} 
+        onChange={setSelectedOption}
+        options={mainOptions}
+        placeholder="تحديد القسم الرئيسي /  المستوي المضاف الية   "
+      />
                 </Form.Group>
 
             </Form>
@@ -60,9 +82,16 @@ const AddSubSection = () => {
                  <Form>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label style={{display:'flex', marginBottom:'15px'}}>  تحديد الفئة* </Form.Label>
-                    <Form.Control type="email" placeholder="تحديد الفئه" className='custom-input' 
+                    {/* <Form.Control type="email" placeholder="تحديد الفئه" className='custom-input' 
                         style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px'}}
-            />
+            /> */}
+
+<Select
+        defaultValue={selectedOption} 
+        onChange={setSelectedOption}
+        options={options}
+        placeholder="تحديد الفئه"  
+      />
             {/* <Accordion>
       <Accordion.Item eventKey="0">
         <Accordion.Header style={{color:'rgba(245, 245, 245, 0.25)'}}  >  تحديد نوع القسم</Accordion.Header>
