@@ -8,3 +8,10 @@
     accent-color: #d46c0c;
     margin-top: -10px;
   }
+
+@media (max-width: 991.98px) { 
+   .meduim-screen{
+  width: 305px !important;
+} }
+
+
