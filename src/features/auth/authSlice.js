@@ -12,14 +12,14 @@ const initialState = {
   error: null,
 }; 
 
- const createLoginUser = createAsyncThunk('auth/login', async (formData, thunkAPI) => {
+ const createLoginUser = createAsyncThunk('auth/login', async ({formData,token}, thunkAPI) => {
   try {
     const response = await baseUrl.post(
       '/api/login_email',formData,
       {
-        // headers: {
-        //     Authorization: `Bearer ${token}` // Include token in the request headers
-        // }
+        headers: {
+            Authorization: `Bearer ${token}` // Include token in the request headers
+        }
     });
     console.log(response.data);
     return response.data;

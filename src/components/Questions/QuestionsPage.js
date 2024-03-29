@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import { Col, Container, Form, Modal, Row, Table } from 'react-bootstrap';
 import addIconColor from "../../images/addColor.svg"
@@ -8,8 +8,51 @@ import viewIcon from "../../images/view.svg"
 import delIcon from "../../images/delete.svg"
 import attentionIcon from "../../images/attention.svg"
 import './question.css'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { getAllquestions, removeOneQuestion } from '../../features/questions/questionSlice';
+
 const QuestionsPage = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch()
+  const getDatQuestion = useSelector((state) => state.question.questionData);
+  const isLoading = useSelector((state) => state.question.isLoading);
+ 
+  console.log(getDatQuestion)
+  console.log(getDatQuestion.data)
+
+  // if(getDatQuestion && getDatQuestion.data){
+  //   console.log(getDatQuestion.data.id)
+  // }
+ 
+  if(getDatQuestion.data){
+    console.log(getDatQuestion.data.numbers_count)
+}
+
+
+  const deleteOneQuestion = useSelector((state) => state.question.deleteOne);
+  const isLoadingDel = useSelector((state) => state.question.isLoading);
+ 
+  console.log(getDatQuestion)
+
+
+  useEffect(() => {
+    dispatch(getAllquestions());
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(removeOneQuestion(id));
+
+  // }, [dispatch]);
+
+  const token ="33|x1VvBnDjcHcGrqAjafaXKXSgv9cWtfSWGXxq7mXqc3db5601"
+  const OnSubmit = async (e) => {
+    e.preventDefault();
+    await dispatch(removeOneQuestion(token))
+    
+  };
+
 
   const [smShow, setSmShow] = useState(false);
  
@@ -124,7 +167,8 @@ const QuestionsPage = () => {
           <p>  هل انت متاكد من حذف هذا السؤال من
           <span style={{color:'#FF8410'}}> الاسئلة  </span> </p>
 
-          <button style={{  borderRadius:'10px', color:'#FFFFFF', padding:'8px',
+          <button onClick={(e) => OnSubmit(e)}
+          style={{  borderRadius:'10px', color:'#FFFFFF', padding:'8px',
                 fontSize:'18px', border:'none', background:'linear-gradient(91deg, #FF7300 0.18%, #FFCD4D 99.68%)', width:'100%'}}>
                 حذف </button>
 
@@ -150,16 +194,22 @@ const QuestionsPage = () => {
             
           </tr>
         </thead>
-        <tbody>
+
+        {
+          !isLoading?(
+            getDatQuestion.data ? (
+            <>
+              {getDatQuestion.data && (getDatQuestion.data).map((item, index) => (
+                <tbody>
           <tr>
-            <td>1</td>
+            <td>{item.id}</td>
             <td> ( 1 ,2 ,3 )</td>
             <td> تدريب عام</td>
             <td> رياضيات</td>
             <td>تطبيقيه</td>
-            <td>مسائل رقمين</td>
-            <td>3</td>
-            <td>( 1 ,2 ,3 )</td>
+            <td> {item.numbers_count}  </td>
+            <td>{item.answer}</td>
+            <td>{item.choices}</td>
             <td>
             
             <div style={{display:'flex', gap:'8px'}}>
@@ -182,7 +232,7 @@ const QuestionsPage = () => {
             </div></td>
            
           </tr>
-          <tr>
+          {/* <tr>
             <td>2</td>
             <td> ( 1 ,2 ,3 ) </td>
             <td> تدريب تفصيلي</td>
@@ -213,199 +263,21 @@ const QuestionsPage = () => {
             </div></td>
            
           </tr>
-          <tr>
-            <td>3</td>
-            <td>( 1 ,2 ,3 )</td>
-            <td> تدريب عام</td>
-            <td>رياضيات</td>
-            <td> تطبيقيه</td>
-            <td>مسائل رقمين</td>
-            <td>3</td>
-            <td>( 1 ,2 ,3 )</td>
-            <td>
-            
-            <div style={{display:'flex', gap:'8px'}}>
-            <Link to='/edit-question'>
-                <img src={editIcon} />
-           </Link>
-           
-                <img src={delIcon}  onClick={() => setSmShow(true)} style={{cursor:'pointer'}} />
-                
-                <button style={{padding:'8px', fontSize:'15px', background:'#FFFFFF' ,color:'#FF8410',
-                            border:'1px solid #FF8410' , borderRadius:'7px'}}>
-                            ايقاف  
-                             
-                        </button> 
-             <div style={{marginTop:'8px'}}>
-             <Form.Check aria-label="option 1" />
-             </div>
-                     
-
-            </div></td>
-           
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>( 1 ,2 ,3 )</td>
-            <td> تدريب عام</td>
-            <td>رياضيات</td>
-            <td>تطبيقيه</td>
-            <td>مسائل رقمين</td>
-            <td>3</td>
-            <td>( 1 ,2 ,3 )</td>
-            <td>
-            
-            <div style={{display:'flex', gap:'8px'}}>
-            <Link to='/edit-question'>
-                <img src={editIcon} />
-           </Link>
-          
-                <img src={delIcon}  onClick={() => setSmShow(true)} style={{cursor:'pointer'}} />
-                
-                <button style={{padding:'8px', fontSize:'15px', background:'#FFFFFF' ,color:'#FF8410',
-                            border:'1px solid #FF8410' , borderRadius:'7px'}}>
-                            ايقاف  
-                             
-                        </button> 
-             <div style={{marginTop:'8px'}}>
-             <Form.Check aria-label="option 1" />
-             </div>
-                     
-
-            </div></td>
-            
-          </tr>
-
-          <tr>
-            <td>5</td>
-            <td>( 1 ,2 ,3 )</td>
-            <td> تدريب عام</td>
-            <td>رياضيات</td>
-            <td>تطبيقيه</td>
-            <td>مسائل رقمين</td>
-            <td>3</td>
-            <td>( 1 ,2 ,3 )</td>
-            <td>
-            
-            <div style={{display:'flex', gap:'8px'}}>
-            <Link to='/edit-question'>
-                <img src={editIcon} />
-           </Link>
-          
-                <img src={delIcon}  onClick={() => setSmShow(true)} style={{cursor:'pointer'}} />
-                
-                <button style={{padding:'8px', fontSize:'15px', background:'#FFFFFF' ,color:'#FF8410',
-                            border:'1px solid #FF8410' , borderRadius:'7px'}}>
-                            ايقاف  
-                             
-                        </button> 
-             <div style={{marginTop:'8px'}}>
-             <Form.Check aria-label="option 1" />
-             </div>
-                     
-
-            </div></td>
-            
-          </tr>
-
-          <tr>
-            <td>6</td>
-            <td>( 1 ,2 ,3 )</td>
-            <td> تدريب عام</td>
-            <td>رياضيات</td>
-            <td>تطبيقيه</td>
-            <td>مسائل رقمين</td>
-            <td>3</td>
-            <td>( 1 ,2 ,3 )</td>
-            <td>
-            
-            <div style={{display:'flex', gap:'8px'}}>
-            <Link to='/edit-question'>
-                <img src={editIcon} />
-           </Link>
-          
-                <img src={delIcon}  onClick={() => setSmShow(true)} style={{cursor:'pointer'}} />
-                
-                <button style={{padding:'8px', fontSize:'15px', background:'#FFFFFF' ,color:'#FF8410',
-                            border:'1px solid #FF8410' , borderRadius:'7px'}}>
-                            ايقاف  
-                             
-                        </button> 
-             <div style={{marginTop:'8px'}}>
-             <Form.Check aria-label="option 1" />
-             </div>
-                     
-
-            </div></td>
-            
-          </tr>
-
-          <tr>
-            <td>6</td>
-            <td>( 1 ,2 ,3 )</td>
-            <td> تدريب عام</td>
-            <td>رياضيات</td>
-            <td>تطبيقيه</td>
-            <td>مسائل رقمين</td>
-            <td>3</td>
-            <td>( 1 ,2 ,3 )</td>
-            <td>
-            
-            <div style={{display:'flex', gap:'8px'}}>
-            <Link to='/edit-question'>
-                <img src={editIcon} />
-           </Link>
-          
-                <img src={delIcon}  onClick={() => setSmShow(true)} style={{cursor:'pointer'}} />
-                
-                <button style={{padding:'8px', fontSize:'15px', background:'#FFFFFF' ,color:'#FF8410',
-                            border:'1px solid #FF8410' , borderRadius:'7px'}}>
-                            ايقاف  
-                             
-                        </button> 
-             <div style={{marginTop:'8px'}}>
-             <Form.Check aria-label="option 1" />
-             </div>
-                     
-
-            </div></td>
-            
-          </tr>
-
-          <tr>
-            <td>7</td>
-            <td>( 1 ,2 ,3 )</td>
-            <td> تدريب عام</td>
-            <td>رياضيات</td>
-            <td>تطبيقيه</td>
-            <td>مسائل رقمين</td>
-            <td>3</td>
-            <td>( 1 ,2 ,3 )</td>
-            <td>
-            
-            <div style={{display:'flex', gap:'8px'}}>
-            <Link to='/edit-question'>
-                <img src={editIcon} />
-           </Link>
-         
-                <img src={delIcon}  onClick={() => setSmShow(true)} style={{cursor:'pointer'}} />
-                
-                <button style={{padding:'8px', fontSize:'15px', background:'#FFFFFF' ,color:'#FF8410',
-                            border:'1px solid #FF8410' , borderRadius:'7px'}}>
-                            ايقاف  
-                             
-                        </button> 
-             <div style={{marginTop:'8px'}}>
-             <Form.Check aria-label="option 1" />
-             </div>
-                     
-
-            </div></td>
-            
-          </tr>
+          */}
 
           
         </tbody>
+              ))}
+            </>
+          ) :   null
+          ):(
+            null
+            )
+        }
+
+
+
+      
       </Table>  
 
 

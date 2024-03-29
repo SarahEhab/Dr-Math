@@ -5,9 +5,11 @@ import './Auth.css'
 import { Link } from "react-router-dom";
 import { createLoginUser } from '../../features/auth/authSlice';
 import { useDispatch, useSelector } from "react-redux";
+import Cookies from "js-cookie";
 
 const Login = () => {
     const dispatch = useDispatch();
+    let token = Cookies.get("token");
     //const navigate = useNavigate();
     const [state, setState] = useState({
       email: "",
@@ -41,7 +43,7 @@ const Login = () => {
         createLoginUser({
           email,
           password,
-        })
+        }, token)
       );
     };
 
