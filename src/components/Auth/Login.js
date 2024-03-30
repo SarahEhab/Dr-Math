@@ -68,7 +68,7 @@ const Login = () => {
     // };
 
     // const OnSubmit = (e) => {
-    //     e.preventDefault();
+    //     e.preventDefault(); 
     //     if (selectedOption === 'admin') {
     //       OnSubmitAdmin(e);
     //     }

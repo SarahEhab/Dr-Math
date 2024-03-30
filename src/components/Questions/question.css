@@ -260,4 +260,30 @@ input[type='file']{
           /* margin-right: -11px !important; */
           width: 957px !important;
      } }
+
+      @media (min-width: 427px) and (max-width: 920px) {   
+  
+         .btn-exl{    
+      flex-direction: column;
+     } 
+  
+   
+   }
+      @media (min-width: 400px) and (max-width: 920px) {   
+  
+         .form-control{    
+            width: 100% !important;
+               } 
+   }
+
+      /* @media  (max-width: 575.98px) {   
+  
+         .form-control{    
+           display: none !important;
+               } 
+   } */
+
+
+
+
         

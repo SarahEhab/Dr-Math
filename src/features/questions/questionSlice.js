@@ -40,12 +40,12 @@ const initialState = {
     //       return error
     //     }
     //   });
-    const removeOneQuestion = createAsyncThunk('del/OneQuestion', async (token, thunkAPI) => {
+    const removeOneQuestion = createAsyncThunk('del/OneQuestion-id', async (id, thunkAPI) => {
         try {
           const response = await baseUrl.delete(
-            `/api/questions/2`
-            ,        { headers: { Authorization: `Bearer ${token}` } 
-        } 
+            `/api/questions/${id}`
+        //     ,        { headers: { Authorization: `Bearer ${token}` } 
+        // } 
             );
             console.log(response.data);
           return response.data;

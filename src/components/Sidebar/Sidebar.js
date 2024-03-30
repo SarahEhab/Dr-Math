@@ -14,15 +14,20 @@ import packageIcon from "../../images/package.svg"
 import sectionIcon from "../../images/section.svg"
 import settingIcon from "../../images/settingIcon.svg"
 import profileIcon from "../../images/profile.svg"
+import grayQuestion from "../../images/grayQuestion.svg"
 import { Link } from 'react-router-dom';
 import { Accordion, Container, Navbar, Row } from 'react-bootstrap';
 
 const Sidebar = () => {
   const [clickedItem, setClickedItem] = useState(null);
+  const [clicked, setClicked] = useState(false);
 
   const handleClick = (itemName) => {
     setClickedItem(itemName);
+    setClicked(!clicked); // to change icon
   };
+
+
   return (
 
     <>
@@ -52,18 +57,18 @@ const Sidebar = () => {
         {/* <img src={drMath} alt="Your Logo" /> */}
         
       </div>
-      <div className="sidebar-menu">
+      <div className="sidebar-menu" style={{marginTop:'-35px'}}>
           <ul>
           <li>
             <a href="#" onClick={() => handleClick('home')} style={{ backgroundColor: clickedItem === 'home' ? '#FF7300' : '' , color: clickedItem === 'home' ? '#FFFFFF' : '#CACACA' }}>
-            <img src={homeIcon} style={{paddingLeft:'7px'}} />
+            <img src={homeIcon} style={{paddingLeft:'2px'}} />
             الصفحه الرئيسيه
             </a>
           </li>
           
           <li>
           <Link to='/Sub-official'  onClick={() => handleClick('subadmins')} style={{ backgroundColor: clickedItem === 'subadmins' ? '#FF7300' : '' , color: clickedItem === 'subadmins' ? '#FFFFFF' : '#CACACA'}}  >
-          <img src={subIcon} style={{paddingLeft:'7px'}} />
+          <img src={subIcon} style={{paddingLeft:'4px'}} />
           المسؤلين الفرعين
         
             {/* <a href="#" onClick={() => handleClick('subadmins')} style={{ backgroundColor: clickedItem === 'subadmins' ? '#FF7300' : '' , color: clickedItem === 'subadmins' ? '#FFFFFF' : '#CACACA'}}>المسؤلين الفرعين</a> */}
@@ -72,7 +77,7 @@ const Sidebar = () => {
 
           <li>
           <Link to='/personal-page'  onClick={() => handleClick('profile')} style={{ backgroundColor: clickedItem === 'profile' ? '#FF7300' : '' , color: clickedItem === 'profile' ? '#FFFFFF' : '#CACACA'}}  >
-          <img src={profileIcon} style={{paddingLeft:'7px'}} />
+          <img src={profileIcon} style={{paddingLeft:'2px'}} />
           الصفحة الشخصية
             {/* <a href="#" onClick={() => handleClick('profile')} style={{ backgroundColor: clickedItem === 'profile' ? '#FF7300' : '' , color: clickedItem === 'profile' ? '#FFFFFF' : '#CACACA'}}>الصفحة الشخصيه</a> */}
          </Link>
@@ -83,7 +88,7 @@ const Sidebar = () => {
           
         
             <a href="/setting" onClick={() => handleClick('settings')} style={{ backgroundColor: clickedItem === 'settings' ? '#FF7300' : '' , color: clickedItem === 'settings' ? '#FFFFFF' : '#CACACA'}}>
-            <img src={settingIcon} style={{paddingLeft:'7px'}} />
+            <img src={settingIcon} style={{paddingLeft:'4px'}} />
             الإعدادات
             </a>
           
@@ -123,7 +128,7 @@ const Sidebar = () => {
 
           <li>
             <a href="#" onClick={() => handleClick('packages')} style={{ backgroundColor: clickedItem === 'packages' ? '#FF7300' : '' , color: clickedItem === 'packages' ? '#FFFFFF' : '#CACACA'}}>
-            <img src={packageIcon} style={{paddingLeft:'7px'}} />
+            <img src={packageIcon} style={{paddingLeft:'4px'}} />
             الباقات
             </a>
           </li>
@@ -149,7 +154,7 @@ const Sidebar = () => {
 
 
             <a href="#" onClick={() => handleClick('sections')} style={{ backgroundColor: clickedItem === 'sections' ? '#FF7300' : '' , color: clickedItem === 'sections' ? '#FFFFFF' : '#CACACA'}}>
-            <img src={sectionIcon} style={{paddingLeft:'7px'}} />
+            <img src={sectionIcon} style={{paddingLeft:'4px'}} />
             الأقسام</a>
           </li>
 
@@ -157,7 +162,7 @@ const Sidebar = () => {
           <li>
           
           <Link to='/Questions'  onClick={() => handleClick('questions')} style={{ backgroundColor: clickedItem === 'questions' ? '#FF7300' : '' , color: clickedItem === 'questions' ? '#FFFFFF' : '#CACACA'}}>
-        <img src={questionIcon} style={{paddingLeft:'7px'}} />
+        <img  src={clicked ? questionIcon  : grayQuestion} style={{paddingLeft:'4px'}} />
           الاسئلة
             {/* <a href="/Questions" onClick={() => handleClick('questions')} style={{ backgroundColor: clickedItem === 'questions' ? '#FF7300' : '' , color: clickedItem === 'questions' ? '#FFFFFF' : '#CACACA'}}>الاسئلة</a> */}
             </Link>
@@ -165,32 +170,34 @@ const Sidebar = () => {
 
           <li>
             <a href="#" onClick={() => handleClick('students')} style={{ backgroundColor: clickedItem === 'students' ? '#FF7300' : '' , color: clickedItem === 'students' ? '#FFFFFF' : '#CACACA'}}>
-            <img src={studentIcon} style={{paddingLeft:'7px'}} />
+            <img src={studentIcon} style={{paddingLeft:'4px'}} />
            الطلاب المسجلين</a>
           </li>
+        
           <li>
-            <a href="#" onClick={() => handleClick('trainers')} style={{ backgroundColor: clickedItem === 'trainers' ? '#FF7300' : '' , color: clickedItem === 'trainers' ? '#FFFFFF' : '#CACACA'}}>
-            <img src={trainersIcon} style={{paddingLeft:'7px'}} />
+            <a href="#" 
+             onClick={() => handleClick('trainers')} style={{fontSize:'15px' , backgroundColor: clickedItem === 'trainers' ? '#FF7300' : '' , color: clickedItem === 'trainers' ? '#FFFFFF' : '#CACACA'}}>
+            <img src={trainersIcon} style={{paddingLeft:'1px'}} />
             المدربين المسجلين</a>
           </li>
           <li>
             <a href="#" onClick={() => handleClick('tournaments')} style={{ backgroundColor: clickedItem === 'tournaments' ? '#FF7300' : '' , color: clickedItem === 'tournaments' ? '#FFFFFF' : '#CACACA'}}> 
-            <img src={tourIcon} style={{paddingLeft:'7px'}} />
+            <img src={tourIcon} style={{paddingLeft:'4px'}} />
              البطولات</a>
           </li>
           <li>
             <a href="#" onClick={() => handleClick('notifications')} style={{ backgroundColor: clickedItem === 'notifications' ? '#FF7300' : '', color: clickedItem === 'notifications' ? '#FFFFFF' : '#CACACA'}}>
-            <img src={notifiIcon} style={{paddingLeft:'7px'}} />
+            <img src={notifiIcon} style={{paddingLeft:'4px'}} />
             الاشعارات</a>
           </li>
           <li>
             <a href="#" onClick={() => handleClick('support')} style={{ backgroundColor: clickedItem === 'support' ? '#FF7300' : '' , color: clickedItem === 'support' ? '#FFFFFF' : '#CACACA'}}>
-            <img src={supportIcon} style={{paddingLeft:'7px'}} />
+            <img src={supportIcon} style={{paddingLeft:'4px'}} />
             الدعم الفني</a>
           </li>
           <li>
             <a href="#" onClick={() => handleClick('contact')} style={{ backgroundColor: clickedItem === 'contact' ? '#FF7300' : '', color: clickedItem === 'contact' ? '#FFFFFF' : '#CACACA' }}>
-            <img src={contactIcon} style={{paddingLeft:'7px'}} />
+            <img src={contactIcon} style={{paddingLeft:'4px'}} />
             تواصل معنا</a>
           </li>
         </ul>

@@ -18,7 +18,8 @@ import drMath from "../../images/drMath.svg"
 import questionIcon from "../../images/question.svg"
 import homeIcon from "../../images/home.svg"
 import subIcon from "../../images/subOff.svg"
-import notifiIcon from "../../images/notifi.svg"
+import searchIcon from "../../images/search.svg"
+import notificationIcon from "../../images/notification.svg"
 import supportIcon from "../../images/support.svg"
 import contactIcon from "../../images/contact.svg"
 import studentIcon from "../../images/students.svg"
@@ -36,7 +37,7 @@ import { Accordion } from 'react-bootstrap';
 
 
 const QuestionsPage = () => {
-  const { id } = useParams();
+  // const { id } = useParams();
   const dispatch = useDispatch()
   const getDatQuestion = useSelector((state) => state.question.questionData);
   const isLoading = useSelector((state) => state.question.isLoading);
@@ -48,8 +49,8 @@ const QuestionsPage = () => {
   //   console.log(getDatQuestion.data.id)
   // }
  
-  if(getDatQuestion.data){
-    console.log(getDatQuestion.data.numbers_count)
+  if(getDatQuestion.data.id){
+    console.log(getDatQuestion.data.id)
 }
 
 
@@ -63,15 +64,20 @@ const QuestionsPage = () => {
     dispatch(getAllquestions());
   }, [dispatch]);
 
+
+  const [id, setId] = useState(getDatQuestion.data.id);
   // useEffect(() => {
   //   dispatch(removeOneQuestion(id));
 
   // }, [dispatch]);
 
   const token ="33|x1VvBnDjcHcGrqAjafaXKXSgv9cWtfSWGXxq7mXqc3db5601"
+
+
+
   const OnSubmit = async (e) => {
-    e.preventDefault();
-    await dispatch(removeOneQuestion(token))
+    // e.preventDefault();
+    await dispatch(removeOneQuestion(id))
     
   };
 
@@ -87,21 +93,111 @@ const QuestionsPage = () => {
   };
     return    <div>
 
-      <Row style={{maxWidth:'100%'}} >
-      <Navbar style={{background:'#FFFFFF'}}  >
+      <div >
+
+      {/* <Navbar style={{background:'#FFFFFF'}}>
+      <div>
+    
+      </div>
       <Container>
+      <Navbar.Brand href="#home">  الاسئله </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+        
+          <Nav className="me-auto">
+          <div style={{display:'flex'}}>
+       
+       <Nav className="mr-auto">
+       <Nav.Link href="#profile" style={{display:'flex'}}>
+       
+  
+
+       <Nav.Link href="#notifications"><AiOutlineSearch size={18}/></Nav.Link>
+       <Nav.Link href="#notifications" style={{marginRight:'8px'}}><AiOutlineBell size={18}/></Nav.Link>
+       <div style={{display:'flex'}}>
+       <div>
+       <div className="circle" style={{width:'50px',height:'50px',borderRadius:'50%',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#D9D9D9',color:'white',marginLeft:'10px'}}>
+           <span className="initials">M</span>
+         </div>
+       </div>
+      
+
+         <div style={{display:'flex', flexDirection:'column'}}>
+         <span style={{fontWeight:'600',fontSize:'16px',color:'#000000',lineHeight:'29.98px', textAlign:'start'}}>admin 1</span><br/>
+         <span className="text-muted" style={{fontSize:'7px',fontWeight:'400',lineHeight:'12.48px', marginTop:'-15px'}}>اخر تسجيل دخول : 20 مارس  03:25 م</span> 
+         </div>
+         
+         </div>
+         
+         
+  
+
+       </Nav.Link>
+     </Nav>
+                 </div>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar> */}
+
+
+
+
+      <Navbar expand="md" style={{background:'#FFFFFF'}}  >
+      {/* <div>
       <img src={drMath} alt="Your Logo" />
-        <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
+      </div> */}
+    
+      <Container>
+      <div>
+      <img src={drMath} alt="Your Logo" />
+      </div>
+        <Navbar.Brand href="#home">  الاسئله </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav"  className="justify-content-end">
           <Navbar.Text>
-            Signed in as: <a href="#login">Mark Otto</a>
+          <div style={{display:'flex'}}>
+       
+          <Nav className="mr-auto">
+          <Nav.Link href="#profile" style={{display:'flex'}}>
+          
+     
+
+          <Nav.Link href="#notifications"> <img src={searchIcon} />  </Nav.Link>
+          <Nav.Link href="#notifications" style={{marginRight:'8px'}}><img src={notificationIcon} /></Nav.Link>
+          <div style={{display:'flex'}}>
+          <div>
+          <div className="circle" style={{width:'50px',height:'50px',borderRadius:'50%',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#D9D9D9',color:'white',marginLeft:'10px'}}>
+              <span className="initials">M</span>
+            </div>
+          </div>
+         
+
+            <div style={{display:'flex', flexDirection:'column'}}>
+            <span style={{fontWeight:'600',fontSize:'16px',color:'#000000',lineHeight:'29.98px', textAlign:'start'}}>admin 1</span><br/>
+            <span className="text-muted" style={{fontSize:'7px',fontWeight:'400',lineHeight:'12.48px', marginTop:'-15px'}}>اخر تسجيل دخول : 20 مارس  03:25 م</span> 
+            </div>
+              {/* <span style={{fontWeight:'600',fontSize:'16px',color:'#000000',lineHeight:'29.98px'}}>admin 1</span><br/> */}
+            {/* <span className="text-muted" style={{fontSize:'7px',fontWeight:'400',lineHeight:'12.48px'}}>اخر تسجيل دخول : 20 مارس  03:25 م</span>  */}
+            </div>
+            {/* <div className="circle" style={{width:'50px',height:'50px',borderRadius:'50%',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#D9D9D9',color:'white',marginRight:'8px'}}>
+              <span className="initials">M</span>
+            </div> */}
+            
+            {/* <Nav.Link href="#notifications" style={{marginRight:'8px'}}><AiOutlineBell size={18}/></Nav.Link>
+
+<Nav.Link href="#notifications"><AiOutlineSearch size={18}/></Nav.Link> */}
+
+          </Nav.Link>
+        </Nav>
+                    </div>
           </Navbar.Text>
       
         </Navbar.Collapse>
+        
       </Container>
     </Navbar>
-      </Row>
+      </div>
    
      
     <Row style={{maxWidth:'100%'}}>
@@ -130,9 +226,9 @@ const QuestionsPage = () => {
                 </div>
         </div> */}
 
-   jj
+ 
    <div style={{paddingRight:'30px', paddingLeft:'30px' , height:'100%'}}>    
-   <Navbar className='navbar-card' expand="lg" dir="ltr" style={{backgroundColor:'white'}}>
+   {/* <Navbar className='navbar-card' expand="lg" dir="ltr" style={{backgroundColor:'white'}}>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" style={{marginLeft:'16px'}}>
         <Nav className="mr-auto">
@@ -159,11 +255,11 @@ const QuestionsPage = () => {
         الأسئلة
         </span>
       </Navbar.Brand>
-    </Navbar>
+    </Navbar> */}
         <div className='box' style={{background:'#FFFFFF', width:'100%', height:'100%' , borderRadius:'10px', padding:'20px', margin:'20px 15px 20px 15px'}}>  
 
 
-            <div style={{ display:'flex', justifyContent:'space-around', paddingTop:'30px'}}>
+            <div style={{ display:'flex', justifyContent:'space-around', paddingTop:'30px'}}  className='btn-exl' >
 
 
                         <div>
@@ -172,9 +268,10 @@ const QuestionsPage = () => {
 
                         <div>
                         <Form.Control
+                        className='search-form'
                         type="text"
                         placeholder="البحث ياختيار نوع السؤال او المستوي او القسم الرئيسي او القسم الفرعي اوعدد الارقام "
-                        style={{width:'300px', borderRadius:'50px', fontSize:'12px', color:'#181818'}}
+                        style={{width:'300px', borderRadius:'50px', fontSize:'12px', color:'#181818', marginBottom:'10px', paddingBottom:'12px', paddingTop:'12px'}}
                         />
                         </div>
 
@@ -182,8 +279,16 @@ const QuestionsPage = () => {
 
             <Link to='/add-excel-sheet'>
                         <button style={{padding:'8px', fontSize:'15px', background:'linear-gradient(91deg, #FF7300 0.18%, #FFCD4D 99.68%)' ,color:'#FFFFFF',
-                            border:'none' , borderRadius:'7px'}}>
+                            border:'none' , borderRadius:'7px', marginLeft:'7px', marginBottom:'7px'}}>
                             اضافه ملف اكسيل   <img src={addIconWhite} />
+                        </button>
+
+            </Link>
+            <Link to='/add-excel-sheet'>
+                        <button
+                         style={{padding:'8px 35px', fontSize:'15px', background:'#FFFFFF' ,color:'rgba(255, 115, 0, 1)',
+                            border:'1px solid rgba(255, 115, 0, 1)' , borderRadius:'7px'}}>
+                           حذف متعدد  
                         </button>
 
             </Link>
@@ -259,7 +364,7 @@ const QuestionsPage = () => {
       </Modal>
 
       <div className="table-responsive">
-          <Table responsive="md"    >
+          <Table  responsive    >
         <thead>
           <tr>
             <th>#</th>
@@ -296,8 +401,9 @@ const QuestionsPage = () => {
             <Link to='/edit-question'>
                 <img src={editIcon} />
            </Link>
-          
-                <img src={delIcon}   onClick={() => setSmShow(true)} style={{cursor:'pointer'}} />
+         
+                <img src={delIcon}  
+                 onClick={() => setSmShow(true, item.id)} style={{cursor:'pointer'}} />
                 
                 <button style={{padding:'8px', fontSize:'15px', background:'#FFFFFF' ,color:'#FF8410',
                             border:'1px solid #FF8410' , borderRadius:'7px'}}>
