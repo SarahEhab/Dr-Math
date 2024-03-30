@@ -28,6 +28,7 @@ import EditSliderPicturesStudent from './components/Setting/EditSliderPicturesSt
 import AddSliderPictureStudent from './components/Setting/AddSliderPictureStudent';
 import SliderPictures from './components/Setting/SliderPicture';
 import SliderPicturesStudent from './components/Setting/SliderPicturesStudent';
+import AddQuestion from './components/Questions/AddQuestion';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
           <Route path="/Questions" element={<Questions /> } />
           <Route path="/add-excel-sheet" element={<AddExcelSheet /> } />
           <Route path="/edit-question" element={<EditQuestion/> } />
+          <Route path="/add-question" element={<AddQuestion/> } />
          
 
           <Route path="/main-section" element={ <MainSection /> } />

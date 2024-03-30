@@ -3,13 +3,12 @@ import Sidebar from '../Sidebar/Sidebar';
 import { Col, Form, Row } from 'react-bootstrap';
 import './question.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { EditOneQuestion } from '../../features/questions/questionSlice';
+import { createOneQuestion } from '../../features/questions/questionSlice';
 
-
-const EditQuestion = () => {
+const AddQuestion = () => {
 
     const dispatch = useDispatch()
-    const addOne = useSelector((state) => state.question.editQuestion);
+    const addOne = useSelector((state) => state.question.createQuestion);
     const isLoading = useSelector((state) => state.question.isLoading);
    
     console.log(addOne)
@@ -84,13 +83,12 @@ const EditQuestion = () => {
         type_level_id:"جمع",
         level_category_id : "فرعي"
       };
-      dispatch(EditOneQuestion(formData ));
+      dispatch(createOneQuestion( formData ));
     };
 
 
 
-
-    return    <div>
+    return   <div>
 
     <Row style={{maxWidth:'100%'}}>
 
@@ -120,7 +118,7 @@ const EditQuestion = () => {
 
 
         <div className='box' style={{background:'#FFFFFF', width:'100%', height:'100%' , borderRadius:'10px' , padding:'20px', margin:'20px 15px 20px 15px'}}>      
-             <p style={{ display:'flex', fontSize:'18px', marginBottom:'20px'}}>تعديل الاسئلة   </p>
+             <p style={{ display:'flex', fontSize:'18px', marginBottom:'20px'}}>اضافه سؤال    </p>
 
             <Row>
                <Col sm={6}>
@@ -128,7 +126,7 @@ const EditQuestion = () => {
                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label style={{display:'flex', marginBottom:'15px'}} >  السؤال* </Form.Label>
                     <Form.Control value={numbers}    onChange={(e)=>handleChangeNumbers(e)}
-                    type="text" placeholder="  أدخل السؤال  " className='custom-input' 
+                     type="text" placeholder="  أدخل السؤال  " className='custom-input' 
                         style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px' ,  marginBottom:'25px'}}
             />
                 </Form.Group>
@@ -137,18 +135,20 @@ const EditQuestion = () => {
 
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label style={{display:'flex', marginBottom:'15px'}} > نوع السؤال* </Form.Label>
-                    <Form.Control  value={id}  
+                    <Form.Control
+                    value={id}  
                       onChange={(e)=>handleChangeTraingType(e)}
-                    type="text" placeholder="  أدخل نوع السؤال  " className='custom-input' 
+                      
+                     type="text" placeholder="  أدخل نوع السؤال  " className='custom-input' 
                         style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px' ,  marginBottom:'25px'}}
             />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label style={{display:'flex', marginBottom:'15px'}}>  القسم الفرعي* </Form.Label>
-                    <Form.Control  value={idSub}  
+                    <Form.Control value={idSub}  
                       onChange={(e)=>handleChangeSub(e)}
-                    type="text" placeholder="أدخل القسم الرئيسي " className='custom-input'
+                    type="text" placeholder="أدخل القسم الفرعي " className='custom-input' 
                     style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px' }}/>
                 </Form.Group>
 
@@ -174,25 +174,24 @@ const EditQuestion = () => {
 
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label style={{display:'flex', marginBottom:'15px'}}> القسم الرئيسي* </Form.Label>
-
-                    <Form.Control  value={idMain}  
+                    <Form.Control   value={idMain}  
                       onChange={(e)=>handleChangeMain(e)}
-                     type="text" placeholder="أدخل القسم الرئيسي  " className='custom-input' 
+                    type="text" placeholder="أدخل القسم الرئيسي  " className='custom-input' 
                     style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px'}}/>
                 </Form.Group>
 
 
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label style={{display:'flex', marginBottom:'15px'}}>  عدد الارقام في السوال* </Form.Label>
+
                     <Form.Control value={numbers_count}    onChange={(e)=>handleChangeNumbersCount(e)}
                      type="text" placeholder="أدخل عدد الارقام في السوال   " className='custom-input' 
                     style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px'}}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label 
-                     style={{display:'flex', marginBottom:'15px'}}>  الاجابه الصحيحه* </Form.Label>
-                    <Form.Control value={answer}    onChange={(e)=>handleChangeAnswer(e)}
+                    <Form.Label style={{display:'flex', marginBottom:'15px'}}>  الاجابه الصحيحه* </Form.Label>
+                    <Form.Control  value={answer}    onChange={(e)=>handleChangeAnswer(e)}
                     type="text" placeholder="أدخل الاجابه الصحيحه      " className='custom-input'
                     style={{borderRadius:'8px', background:'rgb(245 245 245 / 43%)', border:'none', padding:'18px'}}/>
                 </Form.Group>
@@ -203,9 +202,9 @@ const EditQuestion = () => {
                  </Col>
               <div style={{display:'flex', justifyContent:'end'}}>
                       <button onClick={handleSubmit}
-                       style={{padding:'8px 30px', fontSize:'15px', background:'linear-gradient(91deg, #FF7300 0.18%, #FFCD4D 99.68%)' ,color:'#FFFFFF',
+                      style={{padding:'8px 30px', fontSize:'15px', background:'linear-gradient(91deg, #FF7300 0.18%, #FFCD4D 99.68%)' ,color:'#FFFFFF',
                             border:'none' , borderRadius:'7px'}} >
-                           تعديل 
+                          اضافه
                         </button>
               </div>   
               
@@ -225,4 +224,4 @@ const EditQuestion = () => {
 }
 
 
-export default EditQuestion;
+export default AddQuestion;

@@ -42,22 +42,21 @@ const QuestionsPage = () => {
   const getDatQuestion = useSelector((state) => state.question.questionData);
   const isLoading = useSelector((state) => state.question.isLoading);
  
-  console.log(getDatQuestion)
-  console.log(getDatQuestion.data)
 
   // if(getDatQuestion && getDatQuestion.data){
   //   console.log(getDatQuestion.data.id)
   // }
  
-  if(getDatQuestion.data.id){
-    console.log(getDatQuestion.data.id)
-}
+
 
 
   const deleteOneQuestion = useSelector((state) => state.question.deleteOne);
   const isLoadingDel = useSelector((state) => state.question.isLoading);
  
+
+ 
   console.log(getDatQuestion)
+  console.log(getDatQuestion.numbers_count)
 
 
   useEffect(() => {
@@ -65,12 +64,12 @@ const QuestionsPage = () => {
   }, [dispatch]);
 
 
-  const [id, setId] = useState(getDatQuestion.data.id);
+  const [id, setId] = useState();
   // useEffect(() => {
   //   dispatch(removeOneQuestion(id));
 
   // }, [dispatch]);
-
+console.log(id);
   const token ="33|x1VvBnDjcHcGrqAjafaXKXSgv9cWtfSWGXxq7mXqc3db5601"
 
 
@@ -78,6 +77,7 @@ const QuestionsPage = () => {
   const OnSubmit = async (e) => {
     // e.preventDefault();
     await dispatch(removeOneQuestion(id))
+    window.location.reload()
     
   };
 
@@ -264,6 +264,7 @@ const QuestionsPage = () => {
 
                         <div>
                             <p style={{ display:'flex', fontSize:'18px', marginBottom:'25px'}}>عرض الاسئله</p>
+                            
                         </div>
 
                         <div>
@@ -287,12 +288,18 @@ const QuestionsPage = () => {
             <Link to='/add-excel-sheet'>
                         <button
                          style={{padding:'8px 35px', fontSize:'15px', background:'#FFFFFF' ,color:'rgba(255, 115, 0, 1)',
-                            border:'1px solid rgba(255, 115, 0, 1)' , borderRadius:'7px'}}>
+                            border:'1px solid rgba(255, 115, 0, 1)' , borderRadius:'7px', marginLeft:'7px', marginBottom:'7px'}}>
                            حذف متعدد  
                         </button>
 
             </Link>
-                        
+            <Link to='/add-question'>
+                        <button style={{padding:'8px', fontSize:'15px', background:'linear-gradient(91deg, #FF7300 0.18%, #FFCD4D 99.68%)' ,color:'#FFFFFF',
+                            border:'none' , borderRadius:'7px', marginLeft:'7px', marginBottom:'7px'}}>
+                              اضافه سؤال   <img src={addIconWhite} />
+                        </button>
+
+            </Link>
                       
             </div>
                     
@@ -388,10 +395,10 @@ const QuestionsPage = () => {
                 <tbody>
           <tr>
             <td>{item.id}</td>
-            <td> ( 1 ,2 ,3 )</td>
-            <td> تدريب عام</td>
-            <td> رياضيات</td>
-            <td>تطبيقيه</td>
+            <td>( {item.numbers} ) </td>
+            <td> {item.training_type.title} </td>
+            <td> {item.type_level.title}</td>
+            <td>{item.level_category.title}</td>
             <td> {item.numbers_count}  </td>
             <td>{item.answer}</td>
             <td>{item.choices}</td>
@@ -403,7 +410,10 @@ const QuestionsPage = () => {
            </Link>
          
                 <img src={delIcon}  
-                 onClick={() => setSmShow(true, item.id)} style={{cursor:'pointer'}} />
+                 onClick={() => {
+                  setSmShow(true);
+                  setId(item.id);
+                }} style={{cursor:'pointer'}} />
                 
                 <button style={{padding:'8px', fontSize:'15px', background:'#FFFFFF' ,color:'#FF8410',
                             border:'1px solid #FF8410' , borderRadius:'7px'}}>

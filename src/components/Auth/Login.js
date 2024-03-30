@@ -56,27 +56,6 @@ const Login = () => {
     };
     
 
-  
-    // const OnSubmitAdmin = async (e) => {
-    //   e.preventDefault();
-    //   await dispatch(
-    //     createLoginUser({
-    //       email,
-    //       password,
-    //     })
-    //   );
-    // };
-
-    // const OnSubmit = (e) => {
-    //     e.preventDefault(); 
-    //     if (selectedOption === 'admin') {
-    //       OnSubmitAdmin(e);
-    //     }
-    //      else if (selectedOption === 'user') {
-    //       OnSubmitUser(e);
-    //     }
-    //   };
-
     const [selectedOption, setSelectedOption] = useState('option1');
 
   const handleOptionChange = (event) => {
