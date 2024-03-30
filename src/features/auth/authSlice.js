@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import baseUrl from "../../Api/baseURL";
+import toast, { Toaster } from 'react-hot-toast';
 
 const initialState = {
   userLogin:{},
@@ -12,21 +13,28 @@ const initialState = {
   error: null,
 }; 
 
- const createLoginUser = createAsyncThunk('auth/login', async ({formData,token}, thunkAPI) => {
+const createLoginUser = createAsyncThunk('auth/login', async ({ formData, token }, thunkAPI) => {
   try {
     const response = await baseUrl.post(
-      '/api/login_email',formData,
+      '/api/login_email',
+      formData,
       {
         headers: {
-            Authorization: `Bearer ${token}` // Include token in the request headers
+          'Access-Control-Allow-Credentials': 'true',
+          'Access-Control-Allow-Origin': '*', // Update this with your whitelist domains
+          'Access-Control-Allow-Headers': 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With',
+          'Access-Control-Allow-Methods': 'PUT, POST, GET, DELETE, OPTIONS'
         }
-    });
+      }
+    );
     console.log(response.data);
     return response.data;
   } catch (error) {
-    return error
+    // Handle errors properly, you may want to throw the error instead of returning it
+    throw error;
   }
 });
+
 
 
 const forgetPasswordUser = createAsyncThunk('forger/pass', async ({formData,token}, thunkAPI) => {
@@ -54,7 +62,7 @@ const confirmEmailUser = createAsyncThunk('confirm/email', async ({formData,toke
         formData, // Include formData in the request
         {
             headers: {
-                Authorization: `Bearer ${token}` // Include token in the request headers
+                Authorization:`Bearer ${token}`  // Include token in the request headers
             }
         });
         console.log(response.data);
@@ -113,10 +121,14 @@ const authSlice = createSlice({
         state.userLogin = action.payload;
         state.isLoading = false;
         state.error = null;
+        toast.success('تم تسجيل الدخول بنجاح')
+
       })
       .addCase(createLoginUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+        toast.error("حدث خطأ في تسجيل الدخول برجاء المحاولة مرة اخري")
+
       })
 
     

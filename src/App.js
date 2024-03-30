@@ -35,7 +35,8 @@ function App() {
     <div className="App">
     <BrowserRouter>
         <Routes>
-          <Route index element={<Home />} />
+          {/* <Route index element={<Home />} /> */}
+          <Route index element={<Questions />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forget-password" element={<ForgetPassword />} />
           <Route path="/confirm-email" element={<ConfirmEmail /> } />
@@ -59,7 +60,7 @@ function App() {
           <Route path="/add-sub-official" element={ <AddSubOfficials/> } />
           <Route path="/edit-sub-official-details" element={ <EditSubOfficialDetails/> } /> */}
 
-          <Route path="/personal-page" element={ <PersonalPage/> } />
+          {/* <Route path="/personal-page" element={ <PersonalPage/> } /> */}
 {/* 
           <Route path="/introduction-pages" element={ <IntroductionPages/> } />
           <Route path="/slider-picture" element={ <SliderPictures/> } />

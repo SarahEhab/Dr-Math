@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
-import { Col, Container, Form, Modal, Row, Table } from 'react-bootstrap';
+import { Col, Container, Form, Modal, Nav, Navbar, Row, Table } from 'react-bootstrap';
 import addIconColor from "../../images/addColor.svg"
 import addIconWhite from "../../images/addWhite.svg"
 import editIcon from "../../images/edit.svg"
@@ -12,6 +12,28 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getAllquestions, removeOneQuestion } from '../../features/questions/questionSlice';
+import { AiOutlineSearch, AiOutlineBell } from 'react-icons/ai';
+// import './Sidebar.css';
+import drMath from "../../images/drMath.svg"
+import questionIcon from "../../images/question.svg"
+import homeIcon from "../../images/home.svg"
+import subIcon from "../../images/subOff.svg"
+import notifiIcon from "../../images/notifi.svg"
+import supportIcon from "../../images/support.svg"
+import contactIcon from "../../images/contact.svg"
+import studentIcon from "../../images/students.svg"
+import trainersIcon from "../../images/trainer.svg"
+import tourIcon from "../../images/tour.svg"
+import packageIcon from "../../images/package.svg"
+import sectionIcon from "../../images/section.svg"
+import settingIcon from "../../images/settingIcon.svg"
+import profileIcon from "../../images/profile.svg"
+
+import { Accordion } from 'react-bootstrap';
+
+
+
+
 
 const QuestionsPage = () => {
   const { id } = useParams();
@@ -55,20 +77,48 @@ const QuestionsPage = () => {
 
 
   const [smShow, setSmShow] = useState(false);
- 
+
+
+
+  const [clickedItem, setClickedItem] = useState(null);
+
+  const handleClick = (itemName) => {
+    setClickedItem(itemName);
+  };
     return    <div>
 
+      <Row style={{maxWidth:'100%'}} >
+      <Navbar style={{background:'#FFFFFF'}}  >
+      <Container>
+      <img src={drMath} alt="Your Logo" />
+        <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+            Signed in as: <a href="#login">Mark Otto</a>
+          </Navbar.Text>
+      
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+      </Row>
+   
+     
     <Row style={{maxWidth:'100%'}}>
+
+    
        <Col  sm={2} xs={2} md={3} xl={2}>
            <div>
           <Sidebar />
+          
            </div>   
        </Col>
       
       
+      
 
         <Col sm={10} xs={10} md={9} xl={10} >       
-        <div className='nav-bar' style={{background:'#FFFFFF' }}>
+        {/* <div className='nav-bar' style={{background:'#FFFFFF' }}>
                 <div style={{display:'flex', justifyContent:'space-between', padding:'12px'}}>
                     <p> الاشئله</p>
 
@@ -78,9 +128,38 @@ const QuestionsPage = () => {
                         <p> admin</p>
                     </div>
                 </div>
-        </div>
+        </div> */}
 
-   <div style={{paddingRight:'30px', paddingLeft:'30px' , height:'100%'}}>     
+   jj
+   <div style={{paddingRight:'30px', paddingLeft:'30px' , height:'100%'}}>    
+   <Navbar className='navbar-card' expand="lg" dir="ltr" style={{backgroundColor:'white'}}>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav" style={{marginLeft:'16px'}}>
+        <Nav className="mr-auto">
+          <Nav.Link href="#profile" style={{display:'flex'}}>
+          <div style={{textAlign:'end',marginRight:'8px'}}>
+              <span style={{fontWeight:'600',fontSize:'16px',color:'#000000',lineHeight:'29.98px'}}>admin 1</span><br/>
+            <span className="text-muted" style={{fontSize:'7px',fontWeight:'400',lineHeight:'12.48px'}}>اخر تسجيل دخول : 20 مارس  03:25 م</span> 
+            </div>
+            <div className="circle" style={{width:'50px',height:'50px',borderRadius:'50%',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#D9D9D9',color:'white',marginRight:'8px'}}>
+              <span className="initials">M</span>
+            </div>
+            
+            
+
+          </Nav.Link>
+        </Nav>
+        <Nav.Link href="#notifications" style={{marginRight:'8px'}}><AiOutlineBell size={18}/></Nav.Link>
+
+        <Nav.Link href="#notifications"><AiOutlineSearch size={18}/></Nav.Link>
+
+      </Navbar.Collapse>
+      <Navbar.Brand href="#home">
+        <span style={{marginRight:'32px',fontSize:'24px',fontWeight:'400',lineHeight:'42.77px'}}>
+        الأسئلة
+        </span>
+      </Navbar.Brand>
+    </Navbar>
         <div className='box' style={{background:'#FFFFFF', width:'100%', height:'100%' , borderRadius:'10px', padding:'20px', margin:'20px 15px 20px 15px'}}>  
 
 
@@ -114,6 +193,7 @@ const QuestionsPage = () => {
                     
 
             </div>
+
             <div
                     style={{
                         marginLeft: "-55px",
@@ -178,8 +258,8 @@ const QuestionsPage = () => {
         </Modal.Body>
       </Modal>
 
-
-          <Table responsive="sm"    >
+      <div className="table-responsive">
+          <Table responsive="md"    >
         <thead>
           <tr>
             <th>#</th>
@@ -278,8 +358,8 @@ const QuestionsPage = () => {
 
 
       
-      </Table>  
-
+          </Table>  
+     </div>
 
         </div>
   </div>

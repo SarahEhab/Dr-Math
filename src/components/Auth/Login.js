@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row,Col , Container, Form} from 'react-bootstrap'
 import imgForm from "../../images/imgform.png";
 import './Auth.css'
@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { createLoginUser } from '../../features/auth/authSlice';
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -27,7 +28,10 @@ const Login = () => {
   
     const isLoading = useSelector((state) => state.auth.isLoading);
     const error = useSelector((state) => state.auth.error);
+
+    
   
+
     // console.log(res);
     //  console.log(res.data.token)
     // if (res && res.data) {
@@ -41,11 +45,16 @@ const Login = () => {
       e.preventDefault();
       await dispatch(
         createLoginUser({
-          email,
-          password,
-        }, token)
+          formData: {
+            email,
+            password,
+          },
+          
+        })
       );
+      // Handle success or error responses here (redirect or show error message)
     };
+    
 
   
     // const OnSubmitAdmin = async (e) => {
@@ -98,7 +107,7 @@ const Login = () => {
                     value={email}
             />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
                     <Form.Label style={{display:'flex'}}>كلمه المرور </Form.Label>
 
                     <Form.Control type="password" placeholder="أدخل كلمة المرور" className='custom-input meduim-screen ' 
@@ -139,6 +148,8 @@ const Login = () => {
        </Col>
        {/* onClick={(e) => OnSubmit(e)} */}
      </Row>
+     <Toaster />
+
      </div>
     </>;
 }
